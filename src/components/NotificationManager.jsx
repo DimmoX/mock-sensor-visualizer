@@ -20,22 +20,24 @@ const NotificationManager = ({ notifications }) => {
 
   return (
     <div className="fixed top-4 right-4 z-50">
-      <NotificationIcon
-        count={activeNotifications.length}
-        onClick={toggleNotifications}
-      />
-      {showNotifications && (
-        <div className="mt-2 space-y-2 max-h-[80vh] overflow-y-auto">
-          {activeNotifications.map((notification, index) => (
-            <Notification
-              key={index}
-              message={notification.message}
-              type={notification.type}
-              onClose={() => removeNotification(index)}
-            />
-          ))}
-        </div>
-      )}
+      <div className="relative">
+        <NotificationIcon
+          count={activeNotifications.length}
+          onClick={toggleNotifications}
+        />
+        {showNotifications && (
+          <div className="absolute top-full right-0 mt-2 w-80 max-h-[80vh] overflow-y-auto">
+            {activeNotifications.map((notification, index) => (
+              <Notification
+                key={index}
+                message={notification.message}
+                type={notification.type}
+                onClose={() => removeNotification(index)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
