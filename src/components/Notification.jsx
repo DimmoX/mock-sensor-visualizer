@@ -5,7 +5,10 @@ import { Button } from "@/components/ui/button";
 
 const Notification = ({ message, type, onClose }) => {
   return (
-    <Alert variant={type === 'error' ? "destructive" : "default"} className="mb-2 relative">
+    <Alert 
+      variant={type === 'error' ? "destructive" : "default"} 
+      className="mb-2 relative bg-white shadow-md"
+    >
       <AlertCircle className="h-4 w-4" />
       <AlertTitle>{type === 'error' ? 'Alerta' : 'Advertencia'}</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
