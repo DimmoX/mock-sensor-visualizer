@@ -3,26 +3,35 @@ const generateRandomData = (min, max) => {
 };
 
 export const fetchSensorData = (deviceType) => {
-  const value = deviceType === 'temperature'
-    ? generateRandomData(15, 30)
-    : generateRandomData(0, 100);
+  const dataPoints = [];
+  const now = new Date();
   
-  return {
-    timestamp: new Date().toISOString(),
-    value: parseFloat(value.toFixed(2)),
-  };
+  for (let i = 0; i < 5; i++) {
+    const value = deviceType === 'temperature'
+      ? generateRandomData(15, 30)
+      : generateRandomData(0, 100);
+    
+    dataPoints.push({
+      timestamp: new Date(now.getTime() - (4 - i) * 2000).toISOString(),
+      value: parseFloat(value.toFixed(2)),
+    });
+  }
+  
+  return dataPoints;
 };
 
 export const fetchHistoricalData = (deviceId) => {
-  // Simular la obtención de datos históricos
   const deviceType = deviceId.startsWith('temp') ? 'temperature' : 'gas';
   const data = [];
   const now = new Date();
   
   for (let i = 0; i < 24; i++) {
     const timestamp = new Date(now - i * 3600000).toISOString();
-    const value = fetchSensorData(deviceType).value;
-    data.unshift({ timestamp, value });
+    const value = generateRandomData(
+      deviceType === 'temperature' ? 15 : 0,
+      deviceType === 'temperature' ? 30 : 100
+    );
+    data.unshift({ timestamp, value: parseFloat(value.toFixed(2)) });
   }
   
   return Promise.resolve(data);

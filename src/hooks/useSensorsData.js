@@ -10,8 +10,8 @@ export const useSensorsData = (devices) => {
       devices.forEach(device => {
         const latestData = fetchSensorData(device.type);
         newData[device.id] = [
-          ...(sensorsData[device.id] || []).slice(-9),
-          latestData
+          ...(sensorsData[device.id] || []).slice(-29),
+          ...latestData
         ];
       });
       setSensorsData(newData);
