@@ -3,6 +3,7 @@ import { useState } from 'react';
 import SensorChart from '../components/SensorChart';
 import HistoricalData from '../components/HistoricalData';
 import { useSensorsData } from '../hooks/useSensorsData';
+import Notification from '../components/Notification';
 
 const Index = () => {
   const [devices] = useState([
@@ -10,11 +11,15 @@ const Index = () => {
     { id: 'gas1', name: 'Sensor de Gas 1', type: 'gas' },
   ]);
 
-  const sensorsData = useSensorsData(devices);
+  const { sensorsData, notifications } = useSensorsData(devices);
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">GuardianCare</h1>
+      
+      {notifications.map((notification, index) => (
+        <Notification key={index} message={notification.message} type={notification.type} />
+      ))}
       
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Datos de Sensores en Tiempo Real</h2>
