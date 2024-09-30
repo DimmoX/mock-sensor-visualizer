@@ -19,7 +19,7 @@ const HistoricalData = ({ devices }) => {
       <div className="flex space-x-4 mb-4">
         <Select value={selectedDevice} onValueChange={setSelectedDevice}>
           <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="Select a device" />
+            <SelectValue placeholder="Seleccionar un dispositivo" />
           </SelectTrigger>
           <SelectContent>
             {devices.map((device) => (
@@ -27,11 +27,11 @@ const HistoricalData = ({ devices }) => {
             ))}
           </SelectContent>
         </Select>
-        <Button onClick={() => setSelectedDevice(null)}>Clear</Button>
+        <Button onClick={() => setSelectedDevice(null)}>Limpiar</Button>
       </div>
       
-      {isLoading && <p>Loading historical data...</p>}
-      {error && <p>Error loading historical data: {error.message}</p>}
+      {isLoading && <p>Cargando datos históricos...</p>}
+      {error && <p>Error al cargar datos históricos: {error.message}</p>}
       {historicalData && selectedDevice && (
         <SensorChart
           device={devices.find(d => d.id === selectedDevice)}
