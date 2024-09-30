@@ -1,21 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 import SensorChart from '../components/SensorChart';
-import AddDeviceForm from '../components/AddDeviceForm';
 import HistoricalData from '../components/HistoricalData';
 import { useSensorsData } from '../hooks/useSensorsData';
 
 const Index = () => {
-  const [devices, setDevices] = useState([
+  const [devices] = useState([
     { id: 'temp1', name: 'Sensor de Temperatura 1', type: 'temperature' },
     { id: 'gas1', name: 'Sensor de Gas 1', type: 'gas' },
   ]);
 
   const sensorsData = useSensorsData(devices);
-
-  const handleAddDevice = (newDevice) => {
-    setDevices([...devices, newDevice]);
-  };
 
   return (
     <div className="container mx-auto p-4">
@@ -28,11 +23,6 @@ const Index = () => {
             <SensorChart key={device.id} device={device} data={sensorsData[device.id]} />
           ))}
         </div>
-      </div>
-      
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Agregar Nuevo Dispositivo</h2>
-        <AddDeviceForm onAddDevice={handleAddDevice} />
       </div>
       
       <div>
