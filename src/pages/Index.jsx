@@ -20,7 +20,7 @@ const Index = () => {
       <NotificationManager notifications={notifications} />
       
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Datos de Sensores en Tiempo Real</h2>
+        <h2 className="text-2xl font-semibold mb-4">Datos de Sensores</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {devices.map((device) => (
             <SensorChart key={device.id} device={device} data={sensorsData[device.id]} />
