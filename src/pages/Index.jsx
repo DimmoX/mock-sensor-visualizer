@@ -19,7 +19,7 @@ const Index = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Panel de Control de Sensores IoT</h1>
+      <h1 className="text-3xl font-bold mb-6">GuardianCare</h1>
       
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Datos de Sensores en Tiempo Real</h2>
